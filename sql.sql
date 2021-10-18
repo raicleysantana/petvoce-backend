@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 13-Out-2021 às 06:41
+-- Generation Time: 18-Out-2021 às 06:52
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -64,20 +64,41 @@ CREATE TABLE `bichos` (
 --
 
 CREATE TABLE `cadastros` (
-  `codigo` bigint(20) NOT NULL,
-  `tipo` enum('cv','ps','pv','cl') NOT NULL DEFAULT 'cv' COMMENT 'cv = Clínica Viterinária,ps = Pet Shopping,pv = Profissional Viterinário, cl = Cliente',
-  `cpf_cnpj` char(20) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  `endereco` varchar(255) NOT NULL,
-  `telefone` char(20) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `perfil` text NOT NULL,
-  `logo` varchar(255) NOT NULL,
-  `data` datetime NOT NULL,
-  `situacao` enum('0','1') NOT NULL DEFAULT '1',
-  `qtd_curtidas` bigint(20) DEFAULT '0'
+  `cad_id` bigint(20) NOT NULL,
+  `cad_tipo` enum('cv','ps','pv','cl') NOT NULL DEFAULT 'cv' COMMENT 'cv = Clínica Viterinária,ps = Pet Shopping,pv = Profissional Viterinário, cl = Cliente',
+  `cad_cpf_cnpj` char(20) NOT NULL,
+  `cad_nome` varchar(255) NOT NULL,
+  `cad_senha` varchar(255) NOT NULL,
+  `cad_endereco` varchar(255) NOT NULL,
+  `cad_telefone` char(20) NOT NULL,
+  `cad_email` varchar(255) NOT NULL,
+  `cad_perfil` text NOT NULL,
+  `cad_logo` varchar(255) NOT NULL,
+  `cad_data` datetime NOT NULL,
+  `cad_situacao` enum('0','1') NOT NULL DEFAULT '1',
+  `cad_qtd_curtidas` bigint(20) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `cadastros`
+--
+
+INSERT INTO `cadastros` (`cad_id`, `cad_tipo`, `cad_cpf_cnpj`, `cad_nome`, `cad_senha`, `cad_endereco`, `cad_telefone`, `cad_email`, `cad_perfil`, `cad_logo`, `cad_data`, `cad_situacao`, `cad_qtd_curtidas`) VALUES
+(23, 'ps', '', 'petamazon', '', 'sao jorge 575', '92984236418', 'petamazon@gmail.com', '', '', '2020-10-13 11:23:13', '1', 1),
+(25, 'pv', '', 'teste', '', 'teste', 'teste', 'teste@gmial.com', '', '', '2020-12-06 17:06:16', '1', 0),
+(27, 'cv', '', 'Cat Dog Pet Shop e Clínica Veterinária', '', 'Av. Gov. José Lindoso, 04', '(92) 99261-2006', '', '', '', '2020-12-06 20:00:05', '1', 1),
+(29, 'cv', '', 'Mc Dog Pet Shop e Clínica Veterinária', '', 'Av. Autaz Mirim, 5566 - Térreo', ' (92) 98825-9913', '', '', '', '2020-12-06 20:18:50', '1', 0),
+(31, 'pv', '', 'Raicley Santana da silva', '', 'Rua teste', '92994212871', 'raicleysantana39494@gmail.com', 'Teste', '', '0000-00-00 00:00:00', '1', 0),
+(33, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '1', 0),
+(35, 'pv', '', 'Jaqueline Heloisa', '', 'Rua Willian masksoud', '67982691048', 'jaquelineheloisa@doublesp.com.br', 'Teste', '', '0000-00-00 00:00:00', '1', 0),
+(37, 'ps', '', 'Per shop bicho sapeca', '', 'Av. Cosme Ferreira', '9230889785', '', 'Teste', '', '0000-00-00 00:00:00', '1', 1),
+(63, 'cl', '037.821.052-14', 'Raicley Santana da silva', '202cb962ac59075b964b07152d234b70', 'Rua padre ramin', '(92) 99421-2871', 'raicleysantana1@gmail.com', '', '', '0000-00-00 00:00:00', '1', 0),
+(69, 'pv', '417.654.192-04', 'Anne Profissional', 'e10adc3949ba59abbe56e057f20f883e', '', '(55) 92988-5549', 'leidemr177@gmail.com', 'Teste profissional', '', '0000-00-00 00:00:00', '1', 0),
+(65, 'cl', '139.235.105-78', 'RAICLEY', '202cb962ac59075b964b07152d234b70', '', '(92) 99421-2871', 'raicley@gmmai.com', 'Xk', '', '0000-00-00 00:00:00', '1', 0),
+(67, 'cl', '747.370.902-04', 'Anne', 'e10adc3949ba59abbe56e057f20f883e', '', '(92) 99450-4161', 'comercial@mohatron.com.br', 'Teste', '', '0000-00-00 00:00:00', '1', 0),
+(71, 'cv', '10.158.735/0001-00', 'Anne clinica', 'e10adc3949ba59abbe56e057f20f883e', '', '(55) 92988-5549', 'leidemr@gmail.com', 'Teste clinica', '', '0000-00-00 00:00:00', '1', 0),
+(73, 'cl', '601.109.702-25', 'Tamer', '202cb962ac59075b964b07152d234b70', 'Rua', '(92) 99188-6570', 'tamer@mohatron.com.br', 'Teste', '', '0000-00-00 00:00:00', '1', 0),
+(75, 'cl', '999.999.999-99', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'endereço teste', '(99)9999-9999', 'email@gmail.com', '', '', '0000-00-00 00:00:00', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -212,7 +233,7 @@ ALTER TABLE `bichos`
 -- Indexes for table `cadastros`
 --
 ALTER TABLE `cadastros`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`cad_id`);
 
 --
 -- Indexes for table `categorias`
@@ -275,7 +296,7 @@ ALTER TABLE `bichos`
 -- AUTO_INCREMENT for table `cadastros`
 --
 ALTER TABLE `cadastros`
-  MODIFY `codigo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `cad_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `categorias`
 --

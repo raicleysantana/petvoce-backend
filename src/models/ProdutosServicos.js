@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
+const Cadastros = require('./Cadastros');
 
 const ProdutosServicos = db.define("produtos_servicos", {
     ps_codigo: {
@@ -43,5 +44,6 @@ const ProdutosServicos = db.define("produtos_servicos", {
     updatedAt: false,
 });
 
+ProdutosServicos.belongsTo(Cadastros, {foreignKey: 'cad_codigo', allowNull: true})
 
 module.exports = ProdutosServicos;
