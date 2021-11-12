@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
-const Cadastros = require('./Cadastros');
+const Categorias = require('./Categorias');
 
 const ProdutosServicos = db.define("produtos_servicos", {
-    ps_codigo: {
+    ps_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
@@ -13,12 +13,8 @@ const ProdutosServicos = db.define("produtos_servicos", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    cad_codigo: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-    },
 
-    cat_codigo: {
+    cat_id: {
         type: Sequelize.BIGINT,
         allowNull: false,
     },
@@ -27,6 +23,7 @@ const ProdutosServicos = db.define("produtos_servicos", {
         type: Sequelize.TEXT,
         allowNull: false,
     },
+
     ps_foto: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -44,6 +41,6 @@ const ProdutosServicos = db.define("produtos_servicos", {
     updatedAt: false,
 });
 
-ProdutosServicos.belongsTo(Cadastros, {foreignKey: 'cad_codigo', allowNull: true})
+ProdutosServicos.belongsTo(Categorias, { foreignKey: 'cat_id', allowNull: true })
 
 module.exports = ProdutosServicos;
