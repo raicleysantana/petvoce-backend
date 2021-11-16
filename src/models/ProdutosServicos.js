@@ -19,6 +19,11 @@ const ProdutosServicos = db.define("produtos_servicos", {
         allowNull: false,
     },
 
+    ps_tipo: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+
     ps_descricao: {
         type: Sequelize.TEXT,
         allowNull: false,
