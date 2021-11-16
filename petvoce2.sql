@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Nov-2021 às 05:20
+-- Generation Time: 16-Nov-2021 às 05:17
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -66,9 +66,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`cat_id`, `cat_nome`) VALUES
-(1, 'Produto'),
-(2, 'Serviço'),
-(3, 'Outros');
+(1, 'Antipulgas'),
+(2, 'Ração'),
+(3, 'Medicamentos');
 
 -- --------------------------------------------------------
 
@@ -81,10 +81,18 @@ CREATE TABLE `clientes` (
   `cli_nome` varchar(40) NOT NULL,
   `cli_email` varchar(80) NOT NULL,
   `cli_endereco` varchar(150) DEFAULT NULL,
+  `cli_usuario` varchar(80) NOT NULL,
   `cli_senha` varchar(100) NOT NULL,
   `cli_celular` varchar(20) DEFAULT NULL,
   `cli_situacao` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`cli_id`, `cli_nome`, `cli_email`, `cli_endereco`, `cli_usuario`, `cli_senha`, `cli_celular`, `cli_situacao`) VALUES
+(1, 'Raicley Santana da Silva', 'raicleysantana1@gmail.com', 'Rua padre ramin, Zumbi dos palmares 2', 'raicley.santana', '123', '(92) 994212871', '1');
 
 -- --------------------------------------------------------
 
@@ -139,7 +147,7 @@ CREATE TABLE `produtos_servicos` (
 
 INSERT INTO `produtos_servicos` (`ps_id`, `cat_id`, `ps_nome`, `ps_tipo`, `ps_descricao`, `ps_foto`, `ps_valor`, `ps_situacao`) VALUES
 (1, 1, 'Antipulgas e Carrapatos Bravecto MSD para Cães de 4,5 a 10 k', 'produto', '- Indicado para cães;\r\n- Acaba com a infestação de carrapatos e pulgas;\r\n- Rápida ação;\r\n- Efeito prolongado por 12 semanas;\r\n- Comprimidos mastigáveis,\r\n- Disponível em embalagem com 1 comprimido de 250 mg.', 'https://staticpetz.stoom.com.br/fotos/1575296646776.jpg', '192.61', '1'),
-(2, 1, 'Ração Golden Power Training para Cães Adultos Sabor Frango e Arroz - 15kg', '', '- Indicada para cães adultos;\r\n- Ideal para os pets que participam de competições ou que praticam atividades físicas intensas;\r\n- Contém Condroitina e Glicosamina que auxiliam na manutenção das articulações;\r\n- Proporciona maior disposição e rápido restabelecimento físico após exercícios,\r\n- Disponível em embalagens de 15 kg.', 'https://staticpetz.stoom.com.br/fotos/1614090862519_mini.jpg', '153.99', '1');
+(2, 1, 'Ração Golden Power Training para Cães Adultos Sabor Frango e Arroz - 15kg', 'produto', '- Indicada para cães adultos;\r\n- Ideal para os pets que participam de competições ou que praticam atividades físicas intensas;\r\n- Contém Condroitina e Glicosamina que auxiliam na manutenção das articulações;\r\n- Proporciona maior disposição e rápido restabelecimento físico após exercícios,\r\n- Disponível em embalagens de 15 kg.', 'https://staticpetz.stoom.com.br/fotos/1614090862519_mini.jpg', '153.99', '1');
 
 -- --------------------------------------------------------
 
@@ -257,7 +265,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cli_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `cli_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `destaques`
 --
