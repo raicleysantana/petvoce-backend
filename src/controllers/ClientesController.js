@@ -8,11 +8,11 @@ module.exports = {
     },
 
     async login(req, res) {
-    
-        const { username, password } = req.body;
-        
+
+        const { usuario, senha } = req.body;
+
         const cliente = await Cliente.findOne({
-            where: { cli_usuario : username, cli_senha: password }
+            where: { cli_usuario: usuario, cli_senha: senha }
         });
 
         return res.json(cliente);
