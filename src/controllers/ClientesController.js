@@ -16,5 +16,10 @@ module.exports = {
         });
 
         return res.json(cliente);
+    },
+
+    async register(req, res){
+        const cliente = await Cliente.create(req.body);
+        return res.json(cliente);
     }
 }
