@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Nov-2021 às 05:17
+-- Generation Time: 22-Nov-2021 às 06:02
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -78,9 +78,9 @@ INSERT INTO `categorias` (`cat_id`, `cat_nome`) VALUES
 
 CREATE TABLE `clientes` (
   `cli_id` bigint(20) NOT NULL,
-  `cli_nome` varchar(40) NOT NULL,
+  `cli_nome` varchar(60) NOT NULL,
   `cli_email` varchar(80) NOT NULL,
-  `cli_endereco` varchar(150) DEFAULT NULL,
+  `cli_endereco` varchar(255) DEFAULT NULL,
   `cli_usuario` varchar(80) NOT NULL,
   `cli_senha` varchar(100) NOT NULL,
   `cli_celular` varchar(20) DEFAULT NULL,
@@ -92,7 +92,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`cli_id`, `cli_nome`, `cli_email`, `cli_endereco`, `cli_usuario`, `cli_senha`, `cli_celular`, `cli_situacao`) VALUES
-(1, 'Raicley Santana da Silva', 'raicleysantana1@gmail.com', 'Rua padre ramin, Zumbi dos palmares 2', 'raicley.santana', '123', '(92) 994212871', '1');
+(1, 'Raicley Santana da Silva', 'raicleysantana1@gmail.com', 'Rua padre ramin, Zumbi dos palmares 2', 'raicley.santana', '123', '(92) 994212871', '1'),
+(14, 'Teste', 'teste@gmail.com', 'Krkekek', 'teste', '123', '92994212871', '1');
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cli_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cli_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `destaques`
 --
