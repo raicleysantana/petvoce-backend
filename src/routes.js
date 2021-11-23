@@ -13,5 +13,6 @@ routes.get("/produtos-servicos-list", ProdutosServicosController.list);
 routes.get("/produto-servico", ProdutosServicosController.view);
 routes.post("/login", ClienteController.login);
 routes.post("/register-client", ClienteController.register);
+routes.get("/cliente", ClienteController.findOne);
 
 module.exports = routes;

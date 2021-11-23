@@ -18,8 +18,15 @@ module.exports = {
         return res.json(cliente);
     },
 
-    async register(req, res){
+    async register(req, res) {
         const cliente = await Cliente.create(req.body);
+        return res.json(cliente);
+    },
+
+    async findOne(req, res) {
+        const { id } = req.query;
+
+        const cliente = await Cliente.findOne({ where: { cli_id: id } });
         return res.json(cliente);
     }
 }
