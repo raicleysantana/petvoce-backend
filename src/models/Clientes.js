@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Cliente = db.define("clientes", {
+const Clientes = db.define("clientes", {
     cli_id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
@@ -49,4 +49,4 @@ const Cliente = db.define("clientes", {
     updatedAt: false,
 });
 
-module.exports = Cliente;
+module.exports = Clientes;

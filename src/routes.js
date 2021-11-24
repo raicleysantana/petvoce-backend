@@ -1,6 +1,7 @@
-const { Router } = require('express');
+const {Router} = require('express');
 const ProdutosServicosController = require('./controllers/ProdutosServicosController');
 const ClienteController = require("./controllers/ClientesController");
+const VendasController = require('./controllers/VendasController');
 
 const routes = Router();
 
@@ -14,5 +15,6 @@ routes.get("/produto-servico", ProdutosServicosController.view);
 routes.post("/login", ClienteController.login);
 routes.post("/register-client", ClienteController.register);
 routes.get("/cliente", ClienteController.findOne);
+routes.get("/adicionar-venda", VendasController.addVenda);
 
 module.exports = routes;

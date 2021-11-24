@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Nov-2021 às 06:02
+-- Generation Time: 24-Nov-2021 às 05:56
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -177,6 +177,30 @@ CREATE TABLE `usuarios` (
   `usu_situacao` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `ven_id` bigint(20) NOT NULL,
+  `ven_data_criacao` datetime DEFAULT CURRENT_TIMESTAMP,
+  `cli_id` bigint(20) NOT NULL,
+  `ven_data_venda` datetime DEFAULT NULL,
+  `ven_forma_pagamento` int(11) DEFAULT NULL,
+  `ven_taxa_entrega` decimal(20,2) DEFAULT NULL,
+  `ven_total` decimal(20,2) DEFAULT NULL,
+  `ven_situacao` enum('PAGO','PENDENTE','CANCELADO','AGUARDANDO') CHARACTER SET latin1 NOT NULL DEFAULT 'AGUARDANDO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `vendas`
+--
+
+INSERT INTO `vendas` (`ven_id`, `ven_data_criacao`, `cli_id`, `ven_data_venda`, `ven_forma_pagamento`, `ven_taxa_entrega`, `ven_total`, `ven_situacao`) VALUES
+(10, '2021-11-24 04:52:46', 1, NULL, NULL, NULL, NULL, 'AGUARDANDO');
+
 --
 -- Indexes for dumped tables
 --
@@ -244,6 +268,12 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`usu_id`);
 
 --
+-- Indexes for table `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`ven_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -292,6 +322,11 @@ ALTER TABLE `tipo_pet`
 --
 ALTER TABLE `usuarios`
   MODIFY `usu_id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `ven_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
