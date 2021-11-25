@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Nov-2021 às 05:56
+-- Generation Time: 25-Nov-2021 às 06:27
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -199,7 +199,32 @@ CREATE TABLE `vendas` (
 --
 
 INSERT INTO `vendas` (`ven_id`, `ven_data_criacao`, `cli_id`, `ven_data_venda`, `ven_forma_pagamento`, `ven_taxa_entrega`, `ven_total`, `ven_situacao`) VALUES
-(10, '2021-11-24 04:52:46', 1, NULL, NULL, NULL, NULL, 'AGUARDANDO');
+(15, '2021-11-25 00:46:12', 1, NULL, NULL, NULL, NULL, 'AGUARDANDO');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendas_produtos`
+--
+
+CREATE TABLE `vendas_produtos` (
+  `vp_id` bigint(20) NOT NULL,
+  `vp_chave` char(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cli_id` bigint(20) NOT NULL,
+  `ven_id` bigint(20) NOT NULL,
+  `ps_id` bigint(20) NOT NULL,
+  `vp_valor_unitario` decimal(20,2) NOT NULL,
+  `vp_quantidade` int(11) NOT NULL,
+  `vp_observacao` text COLLATE utf8_unicode_ci,
+  `vp_data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `vendas_produtos`
+--
+
+INSERT INTO `vendas_produtos` (`vp_id`, `vp_chave`, `cli_id`, `ven_id`, `ps_id`, `vp_valor_unitario`, `vp_quantidade`, `vp_observacao`, `vp_data_criacao`) VALUES
+(1, '1151', 1, 15, 1, '192.61', 1, NULL, '2021-11-25 04:55:07');
 
 --
 -- Indexes for dumped tables
@@ -274,6 +299,13 @@ ALTER TABLE `vendas`
   ADD PRIMARY KEY (`ven_id`);
 
 --
+-- Indexes for table `vendas_produtos`
+--
+ALTER TABLE `vendas_produtos`
+  ADD PRIMARY KEY (`vp_id`),
+  ADD UNIQUE KEY `vp_chave` (`vp_chave`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -326,7 +358,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `ven_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ven_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `vendas_produtos`
+--
+ALTER TABLE `vendas_produtos`
+  MODIFY `vp_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
