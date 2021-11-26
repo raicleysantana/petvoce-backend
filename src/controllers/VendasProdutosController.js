@@ -23,4 +23,5 @@ module.exports = {
         });
         return res.json(vendas_produtos);
     },
+
 };
