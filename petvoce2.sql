@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Nov-2021 às 06:27
+-- Generation Time: 26-Nov-2021 às 05:38
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -220,13 +220,6 @@ CREATE TABLE `vendas_produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `vendas_produtos`
---
-
-INSERT INTO `vendas_produtos` (`vp_id`, `vp_chave`, `cli_id`, `ven_id`, `ps_id`, `vp_valor_unitario`, `vp_quantidade`, `vp_observacao`, `vp_data_criacao`) VALUES
-(1, '1151', 1, 15, 1, '192.61', 1, NULL, '2021-11-25 04:55:07');
-
---
 -- Indexes for dumped tables
 --
 
@@ -363,7 +356,7 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT for table `vendas_produtos`
 --
 ALTER TABLE `vendas_produtos`
-  MODIFY `vp_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `vp_id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
