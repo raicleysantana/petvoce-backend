@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Nov-2021 às 05:38
+-- Generation Time: 29-Nov-2021 às 06:23
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -111,6 +111,27 @@ CREATE TABLE `destaques` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `forma_pagamento`
+--
+
+CREATE TABLE `forma_pagamento` (
+  `fp_id` int(11) NOT NULL,
+  `fp_descricao` int(11) NOT NULL,
+  `fp_situacao` enum('0','1') NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `forma_pagamento`
+--
+
+INSERT INTO `forma_pagamento` (`fp_id`, `fp_descricao`, `fp_situacao`) VALUES
+(1, 0, '1'),
+(2, 0, '1'),
+(3, 0, '1');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pet`
 --
 
@@ -171,11 +192,18 @@ CREATE TABLE `usuarios` (
   `usu_id` bigint(20) NOT NULL,
   `usu_nome` varchar(60) NOT NULL,
   `usu_email` varchar(60) NOT NULL,
-  `usu_login` varchar(60) NOT NULL,
+  `usu_usuario` varchar(60) NOT NULL,
   `usu_senha` varchar(100) NOT NULL,
   `usu_nivel_acesso` enum('administrator','manager','user') DEFAULT NULL,
   `usu_situacao` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`usu_id`, `usu_nome`, `usu_email`, `usu_usuario`, `usu_senha`, `usu_nivel_acesso`, `usu_situacao`) VALUES
+(1, 'webmaster', 'webmaster@gmail.com', 'webmaster', 'webmaster', 'administrator', '1');
 
 -- --------------------------------------------------------
 
@@ -220,6 +248,13 @@ CREATE TABLE `vendas_produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Extraindo dados da tabela `vendas_produtos`
+--
+
+INSERT INTO `vendas_produtos` (`vp_id`, `vp_chave`, `cli_id`, `ven_id`, `ps_id`, `vp_valor_unitario`, `vp_quantidade`, `vp_observacao`, `vp_data_criacao`) VALUES
+(1, '1152', 1, 15, 2, '153.99', 1, NULL, '2021-11-27 02:32:01');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -257,6 +292,12 @@ ALTER TABLE `clientes`
 ALTER TABLE `destaques`
   ADD PRIMARY KEY (`des_id`),
   ADD KEY `FK_DESTAQUES_PRODUTOS_SERVICOS` (`ps_id`);
+
+--
+-- Indexes for table `forma_pagamento`
+--
+ALTER TABLE `forma_pagamento`
+  ADD PRIMARY KEY (`fp_id`);
 
 --
 -- Indexes for table `pet`
@@ -328,6 +369,11 @@ ALTER TABLE `clientes`
 ALTER TABLE `destaques`
   MODIFY `des_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `forma_pagamento`
+--
+ALTER TABLE `forma_pagamento`
+  MODIFY `fp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
@@ -346,7 +392,7 @@ ALTER TABLE `tipo_pet`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usu_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `usu_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `vendas`
 --
@@ -356,7 +402,7 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT for table `vendas_produtos`
 --
 ALTER TABLE `vendas_produtos`
-  MODIFY `vp_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `vp_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
