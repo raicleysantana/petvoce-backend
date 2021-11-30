@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Nov-2021 às 06:23
+-- Generation Time: 30-Nov-2021 às 05:49
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -195,7 +195,7 @@ CREATE TABLE `usuarios` (
   `usu_usuario` varchar(60) NOT NULL,
   `usu_senha` varchar(100) NOT NULL,
   `usu_nivel_acesso` enum('administrator','manager','user') DEFAULT NULL,
-  `usu_situacao` enum('0','1') DEFAULT NULL
+  `usu_situacao` enum('0','1') DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -203,7 +203,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usu_id`, `usu_nome`, `usu_email`, `usu_usuario`, `usu_senha`, `usu_nivel_acesso`, `usu_situacao`) VALUES
-(1, 'webmaster', 'webmaster@gmail.com', 'webmaster', 'webmaster', 'administrator', '1');
+(1, 'webmaster', 'webmaster@gmail.com', 'webmaster', 'webmaster', 'administrator', '1'),
+(2, 'Teste', '', 'Teste', '123', 'user', '1'),
+(3, 'Teste', '', 'Teste', '123', 'administrator', '1'),
+(4, 'Kdskh', '', 'Jddjh', 'W16', 'manager', '1');
 
 -- --------------------------------------------------------
 
@@ -392,7 +395,7 @@ ALTER TABLE `tipo_pet`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usu_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usu_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `vendas`
 --

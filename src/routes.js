@@ -20,6 +20,10 @@ routes.post("/register-client", ClienteController.register);
 routes.get("/cliente", ClienteController.findOne);
 routes.get("/venda", VendasController.venda);
 routes.get("/vendas-produtos", VendasProdutosController.index);
+routes.get("/usuarios", UsuarioController.index);
 routes.post("/login-usuario", UsuarioController.login);
+routes.post("/usuario-salvar", UsuarioController.register);
+routes.get("/usuario-visualizar", UsuarioController.findOne);
+routes.post("/usuario-excluir", UsuarioController.delete);
 
 module.exports = routes;
