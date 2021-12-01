@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Nov-2021 às 05:49
+-- Generation Time: 01-Dez-2021 às 05:58
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -169,7 +169,8 @@ CREATE TABLE `produtos_servicos` (
 
 INSERT INTO `produtos_servicos` (`ps_id`, `cat_id`, `ps_nome`, `ps_tipo`, `ps_descricao`, `ps_foto`, `ps_valor`, `ps_situacao`) VALUES
 (1, 1, 'Antipulgas e Carrapatos Bravecto MSD para Cães de 4,5 a 10 k', 'produto', '- Indicado para cães;\r\n- Acaba com a infestação de carrapatos e pulgas;\r\n- Rápida ação;\r\n- Efeito prolongado por 12 semanas;\r\n- Comprimidos mastigáveis,\r\n- Disponível em embalagem com 1 comprimido de 250 mg.', 'https://staticpetz.stoom.com.br/fotos/1575296646776.jpg', '192.61', '1'),
-(2, 1, 'Ração Golden Power Training para Cães Adultos Sabor Frango e Arroz - 15kg', 'produto', '- Indicada para cães adultos;\r\n- Ideal para os pets que participam de competições ou que praticam atividades físicas intensas;\r\n- Contém Condroitina e Glicosamina que auxiliam na manutenção das articulações;\r\n- Proporciona maior disposição e rápido restabelecimento físico após exercícios,\r\n- Disponível em embalagens de 15 kg.', 'https://staticpetz.stoom.com.br/fotos/1614090862519_mini.jpg', '153.99', '1');
+(2, 1, 'Ração Golden Power Training para Cães Adultos Sabor Frango e Arroz - 15kg', 'produto', '- Indicada para cães adultos;\r\n- Ideal para os pets que participam de competições ou que praticam atividades físicas intensas;\r\n- Contém Condroitina e Glicosamina que auxiliam na manutenção das articulações;\r\n- Proporciona maior disposição e rápido restabelecimento físico após exercícios,\r\n- Disponível em embalagens de 15 kg.', 'https://staticpetz.stoom.com.br/fotos/1614090862519_mini.jpg', '153.99', '1'),
+(5, 2, 'Teste', 'produto', 'Fkdkdlfmfgi', 'eferfmrpfor', '0.00', '1');
 
 -- --------------------------------------------------------
 
@@ -385,7 +386,7 @@ ALTER TABLE `pet`
 -- AUTO_INCREMENT for table `produtos_servicos`
 --
 ALTER TABLE `produtos_servicos`
-  MODIFY `ps_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ps_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tipo_pet`
 --

@@ -38,14 +38,15 @@ const ProdutosServicos = db.define("produtos_servicos", {
         allowNull: false,
     },
     ps_situacao: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM('0', '1'),
         allowNull: false,
+        defaultValue: "1"
     },
 }, {
     createdAt: false,
     updatedAt: false,
 });
 
-ProdutosServicos.belongsTo(Categorias, { foreignKey: 'cat_id', allowNull: true })
+ProdutosServicos.belongsTo(Categorias, {foreignKey: 'cat_id', allowNull: true})
 
 module.exports = ProdutosServicos;
