@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const {QueryTypes} = require('sequelize');
 const db = require("../db");
 const Vendas = require("../models/Vendas");
 const VendasProdutos = require("../models/VendasProdutos");
@@ -77,5 +78,42 @@ module.exports = {
 
 
         return res.json(vendas_produtos);
+    },
+
+    async detalhes(req, res) {
+        const {cli_id} = req.body;
+
+        var sql = "SELECT SUM(vp.vp_valor_unitario * vp_quantidade) as total FROM vendas v\n " +
+            " INNER JOIN vendas_produtos vp ON vp.ven_id = v.ven_id\n" +
+            " INNER JOIN produtos_servicos ps ON ps.ps_id = vp.ps_id\n" +
+            " WHERE v.cli_id = " + cli_id + " AND v.ven_situacao = 'AGUARDANDO'";
+
+        const vendas = await db.query(sql, {type: QueryTypes.SELECT});
+        return res.json(vendas[0]);
+    },
+
+    async pagar(req, res) {
+        const {cli_id, total, fp_id} = req.body;
+
+        const venda = Vendas.update({
+            ven_situacao: "PAGO",
+            ven_total: total,
+            ven_forma_pagamento: fp_id
+
+        }, {
+            where: {cli_id}
+        });
+
+        return res.json(venda);
+    },
+
+    async vendas_pagas(req, res) {
+        const {cli_id} = req.body;
+
+        const vendas = await Vendas.findAll({
+            where: {cli_id, ven_situacao: "PAGO"},
+        });
+
+        return res.json(vendas);
     }
 }
