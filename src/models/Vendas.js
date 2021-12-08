@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 const Clientes = require("./Clientes");
+const FormaPagamento = require('./formaPagamento');
 
 const Vendas = db.define("vendas", {
     ven_id: {
@@ -51,5 +52,6 @@ const Vendas = db.define("vendas", {
 });
 
 Vendas.belongsTo(Clientes, {foreignKey: "cli_id", allowNull: false});
+Vendas.belongsTo(FormaPagamento, {foreignKey: "ven_forma_pagamento", allowNull: false});
 
 module.exports = Vendas;

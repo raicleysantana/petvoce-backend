@@ -4,6 +4,7 @@ const db = require("../db");
 const Vendas = require("../models/Vendas");
 const VendasProdutos = require("../models/VendasProdutos");
 const ProdutosServicos = require("../models/ProdutosServicos");
+const FormaPagamento = require("../models/FormaPagamento");
 
 module.exports = {
     async index(req, res) {
@@ -111,8 +112,14 @@ module.exports = {
         const {cli_id} = req.body;
 
         const vendas = await Vendas.findAll({
+            include : [{
+                model : FormaPagamento,
+                required: false,
+                as:'forma_pagamento'
+            }],
             where: {cli_id, ven_situacao: "PAGO"},
         });
+
 
         return res.json(vendas);
     }
